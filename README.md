@@ -1,0 +1,1 @@
+Presented is my personal findings with regards to countries of the world, their GPD levels and the relationship between these aforementioned levels and concurrent democracy scores. In order to chart such data, I have used World Development Indicators and Polity IV as source datasets.
