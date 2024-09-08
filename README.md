@@ -1,1 +1,3 @@
 Presented is my personal findings with regards to countries of the world, their GPD levels and the relationship between these aforementioned levels and concurrent democracy scores. In order to chart such data, I have used World Development Indicators and Polity IV as source datasets.
+
+As a result of my analysis, it has been found that there is in fact a positve relationship between any given country's GDP level and democracy score. As displayed by the data, the higehr a country's GPP, the higher that respective country's democracy score tends to be in conjuction. In efforts of demonstrating this relationship, a trend line has been used in the chart for clarity.
