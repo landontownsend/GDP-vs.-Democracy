@@ -1,17 +1,27 @@
-# Exploring the relationship between GDP per Capita and Democracy Scores for countries of the world using World Development Indicators and Polity IV data
-library(tidyverse)
-library(dplyr)
-library(readxl)
+# Install and load the WDI package
+install.packages("WDI")  # Run this only once
+library(WDI)
 
+# Fetch the WDI data for GDP per capita (use the indicator "NY.GDP.PCAP.CD" for GDP per capita)
+wdi_data <- WDI(country = "all", indicator = "NY.GDP.PCAP.CD", start = 2000, end = 2018, extra = TRUE)
+
+# Load the Polity IV data
 p5v2018 <- read_excel("Downloads/p5v2018.xls")
-install.packages("WDI")
-# Question: Is there a relationship between level of democracy and GDP per capita? 
-# Data merging and initial plotting
+
+# Merge datasets by country and year
 merged_data <- merge(wdi_data, p5v2018, by = c("country", "year"))
-ggplot(merged_data, aes(x = NY.GDP.PCAP.CD, y = polity)) + geom_point(color = "blue", size = 3) + labs(x = "GDP per Capita", y = "Democracy Score", title = "GDP vs. Democracy")
+
+# Initial plot
+library(ggplot2)
+ggplot(merged_data, aes(x = NY.GDP.PCAP.CD, y = polity)) + 
+  geom_point(color = "blue", size = 3) + 
+  labs(x = "GDP per Capita", y = "Democracy Score", title = "GDP vs. Democracy")
+
 # Cleaning data for better plotting
 cleaned_data <- na.omit(merged_data[, c("NY.GDP.PCAP.CD", "polity")])
-# Plotting data and enhancing chart for efficacy
+
+# Enhanced plot with additional formatting
+library(scales)
 ggplot(cleaned_data, aes(x = NY.GDP.PCAP.CD, y = polity)) +
   geom_point(color = "steelblue", size = 2, alpha = 0.7) +  
   scale_x_log10(labels = comma) +                                          
